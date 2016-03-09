@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Projeto</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="well"> 
+        <h3>Área de Acesso Restrito</h3>
+
+        Usuario autenticado:
+        <strong> @User.Identity.GetUserName() </strong> | 
+        <a href="/Usuario/Logout">Sair do Sistema</a>
+
+    </div>
+
+    <div class="col-md-12">
+        @RenderBody()
+    </div>
+
+</body>
+</html>
