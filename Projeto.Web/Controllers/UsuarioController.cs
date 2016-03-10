@@ -47,6 +47,8 @@ namespace Projeto.Web.Controllers
                     var ticket = userManager.CreateIdentity(u, DefaultAuthenticationTypes.ApplicationCookie);
                     HttpContext.GetOwinContext().Authentication.SignIn(ticket);
 
+                    Session.Add("usuariologado", u);
+
                     return Json(new
                     {
                         redirectUrl = Url.Action("Index", "Home", new { area = "AreaRestrita" }),

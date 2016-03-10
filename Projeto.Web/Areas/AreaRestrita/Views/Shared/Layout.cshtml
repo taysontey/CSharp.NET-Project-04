@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@using Projeto.Entity.Entities
 <!DOCTYPE html>
 
 <html>
@@ -11,19 +12,34 @@
 
 </head>
 <body>
+    <div class="container">
+        <div class="well">
+            @{
+                if (Session["usuariologado"] != null)
+                {
+                    Usuario u = (Usuario)Session["usuariologado"];
+                    <div class="row">
+                        <div class="col-md-10">
+                        </div>
 
-    <div class="well"> 
-        <h3>Área de Acesso Restrito</h3>
+                        <div class="col-md-2">
+                            <img src="/Imagens/@u.Foto" class="img-circle"
+                                 width="80" height="80" />
+                            <br />
 
-        Usuario autenticado:
-        <strong> @User.Identity.GetUserName() </strong> | 
-        <a href="/Usuario/Logout">Sair do Sistema</a>
+                            Usuário:
+                            <strong> @User.Identity.GetUserName() </strong>
 
+                            <br />
+                            <a href="/Usuario/Logout" class="btn btn-danger glyphicon glyphicon-log-out"> Sair do Sistema</a>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <div class="col-md-12">
+            @RenderBody()
+        </div>
     </div>
-
-    <div class="col-md-12">
-        @RenderBody()
-    </div>
-
 </body>
 </html>
