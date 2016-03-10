@@ -36,3 +36,26 @@ myApp.controller('usuarioCtrl', ['$scope', 'Upload', '$http', function ($scope, 
     }
 }]);
 
+myApp.directive('passwordCheck', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, elem, attrs, model) {
+
+            scope.$watch(attrs.passwordCheck, function (value) {
+                if (model.$viewValue !== undefined && model.$viewValue !== '') {
+                    model.$setValidity('passwordCheck', value === model.$viewValue);
+                }
+            });
+            model.$parsers.push(function (value) {
+                if (value === undefined || value === '') {
+                    model.$setValidity('passwordCheck', true);
+                    return value;
+                }
+                var isValid = value === scope.$eval(attrs.passwordCheck);
+                model.$setValidity('passwordCheck', isValid);
+                return isValid ? value : undefined;
+            });
+        }
+    };
+});
+

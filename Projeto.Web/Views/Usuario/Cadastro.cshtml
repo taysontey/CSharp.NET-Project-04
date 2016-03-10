@@ -31,18 +31,20 @@
                         <span ng-show="myForm.senha.$touched && myForm.senha.$invalid" style="color:red">Campo Senha é obrigatório</span>
                         <br />
 
-                        <input type="password" name="senhaConfirm" data-ng-model="usuario.SenhaConfirm" class="form-control" placeholder="Confirme a senha" required />
-                        <span ng-show="myForm.senhaConfirm.$touched && myForm.senhaConfirm.$invalid" style="color:red">Campo Confirme a senha é obrigatório</span>
+                        <input type="password" name="senhaConfirm" data-ng-model="usuario.SenhaConfirm" password-check="usuario.Senha" class="form-control" placeholder="Confirme a senha" required />
+                        <span ng-show="myForm.senhaConfirm.$error.passwordCheck" style="color:red">As senhas não coencidem</span>
                         <br />
                         <br />
 
                         <label>Foto:</label>
                         <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB"/>
-
+                     
                     </div>
 
                     <div class="panel-footer">
-                        <button name="btnCadastrar" data-ng-click="cadastrar(usuario, file)" class=" btn btn-info glyphicon glyphicon-plus-sign" style="width:420px">
+                        <button name="btnCadastrar"
+                                ng-disabled="myForm.nome.$invalid || myForm.sobrenome.$invalid || myForm.login.$invalid || myForm.senha.$invalid || myForm.senhaConfirm.$invalid"
+                                data-ng-click="cadastrar(usuario, file)" class=" btn btn-info glyphicon glyphicon-plus-sign" style="width:420px">
                             Cadastrar Usuário
                         </button>
                         <hr />
@@ -54,3 +56,5 @@
         </div>
     </div>
 </form>
+
+    
