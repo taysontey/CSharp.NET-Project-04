@@ -16,19 +16,15 @@
                     <div class="panel-body">
 
                         <input type="text" name="nome" data-ng-model="usuario.Nome" class="form-control" placeholder="Nome" required/>
-                        <span ng-show="myForm.nome.$touched && myForm.nome.$invalid" style="color:red">Campo Nome é obrigatório</span>
                         <br />
                         
                         <input type="text" name="sobrenome" data-ng-model="usuario.Sobrenome" class="form-control" placeholder="Sobrenome" required />
-                        <span ng-show="myForm.sobrenome.$touched && myForm.sobrenome.$invalid" style="color:red">Campo Sobrenome é obrigatório</span>
                         <br />
 
                         <input type="text" name="login" data-ng-model="usuario.Login" class="form-control" placeholder="Login" required />
-                        <span ng-show="myForm.login.$touched && myForm.login.$invalid" style="color:red">Campo Login é obrigatório</span>
                         <br />
 
                         <input type="password" name="senha" data-ng-model="usuario.Senha" class="form-control" placeholder="Senha" required />
-                        <span ng-show="myForm.senha.$touched && myForm.senha.$invalid" style="color:red">Campo Senha é obrigatório</span>
                         <br />
 
                         <input type="password" name="senhaConfirm" data-ng-model="usuario.SenhaConfirm" password-check="usuario.Senha" class="form-control" placeholder="Confirme a senha" required />
@@ -37,13 +33,13 @@
                         <br />
 
                         <label>Foto:</label>
-                        <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB"/>
+                        <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB" required/>
                      
                     </div>
 
                     <div class="panel-footer">
                         <button name="btnCadastrar"
-                                ng-disabled="myForm.nome.$invalid || myForm.sobrenome.$invalid || myForm.login.$invalid || myForm.senha.$invalid || myForm.senhaConfirm.$invalid"
+                                ng-disabled="myForm.nome.$invalid || myForm.sobrenome.$invalid || myForm.login.$invalid || myForm.senha.$invalid || myForm.senhaConfirm.$invalid || myForm.file.$invalid"
                                 data-ng-click="cadastrar(usuario, file)" class=" btn btn-info glyphicon glyphicon-plus-sign" style="width:420px">
                             Cadastrar Usuário
                         </button>

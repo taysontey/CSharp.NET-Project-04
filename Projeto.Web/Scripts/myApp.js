@@ -31,7 +31,9 @@ myApp.controller('usuarioCtrl', ['$scope', 'Upload', '$http', function ($scope, 
             url: '/Usuario/CadastrarUsuario',
             data: { model: usuario, file: file }
         }).then(function (resp) {
-            $scope.msg = resp.data;
+            $scope.msg = resp.data;         //mensagem
+            $scope.usuario = "";            //reseta os valores do usuario
+            $scope.myForm.$setPristine();   //reseta o form "myForm"
         });
     }
 }]);

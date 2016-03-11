@@ -12,34 +12,44 @@
 
 </head>
 <body>
-    <div class="container">
-        <div class="well">
-            @{
-                if (Session["usuariologado"] != null)
-                {
-                    Usuario u = (Usuario)Session["usuariologado"];
-                    <div class="row">
-                        <div class="col-md-10">
+    @{
+        if (Session["usuariologado"] != null)
+        {
+            Usuario u = (Usuario)Session["usuariologado"];
+            <div class="container">
+                <div class="row">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="col-md-10">
+                                <h3>Projeto Identity</h3>
+                                Usuário:
+                                <strong> @User.Identity.GetUserName() </strong>
+                            </div>
+
+                            <div class="col-md-2" style="text-align:right">
+                                <img src="/Imagens/@u.Foto" class="img-circle"
+                                     width="80" height="80" />
+                                
+                            </div>
+                            <br /><br /><br /><br />
                         </div>
-
-                        <div class="col-md-2">
-                            <img src="/Imagens/@u.Foto" class="img-circle"
-                                 width="80" height="80" />
-                            <br />
-
-                            Usuário:
-                            <strong> @User.Identity.GetUserName() </strong>
-
-                            <br />
-                            <a href="/Usuario/Logout" class="btn btn-danger glyphicon glyphicon-log-out"> Sair do Sistema</a>
-                        </div>
+                        <nav>
+                            <div class="container-fluid">
+                                <ul class="nav nav-tabs">
+                                    <li>
+                                        <a href="#"><span class="glyphicon glyphicon-home"></span> Home</a>
+                                    </li>
+                                    <li class="nav nav-bar navbar-right">
+                                        <a href="/Usuario/Logout"><spam class="glyphicon glyphicon-log-out"></spam> Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
                     </div>
-                }
-            }
-        </div>
-        <div class="col-md-12">
-            @RenderBody()
-        </div>
-    </div>
+                </div>
+                @RenderBody()
+            </div>
+        }
+    }
 </body>
 </html>
