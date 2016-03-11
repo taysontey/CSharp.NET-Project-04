@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNet.Identity
+@using Projeto.Entity.Entities
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Projeto</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+
+</head>
+<body>
+    @{
+        if (Session["usuariologado"] != null)
+        {
+            Usuario u = (Usuario)Session["usuariologado"];
+            <div class="container">
+                <div class="row">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="col-md-10">
+                                <h3>Projeto Identity</h3>
+                                Usuário:
+                                <strong> @User.Identity.GetUserName() </strong>
+                            </div>
+
+                            <div class="col-md-2" style="text-align:right">
+                                <img src="/Imagens/@u.Foto" class="img-circle"
+                                     width="80" height="80" />
+                                
+                            </div>
+                            <br /><br /><br /><br />
+                        </div>
+                        <nav>
+                            <div class="container-fluid">
+                                <ul class="nav nav-tabs">
+                                    <li>
+                                        <a href="#"><span class="glyphicon glyphicon-home"></span> Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="glyphicon glyphicon-arrow-down"></span> Fornecedor</a>
+                                    </li>
+                                    <li class="nav nav-bar navbar-right">
+                                        <a href="/Usuario/Logout"><spam class="glyphicon glyphicon-log-out"></spam> Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                @RenderBody()
+            </div>
+        }
+    }
+</body>
+</html>
