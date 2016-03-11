@@ -44,16 +44,29 @@ namespace Projeto.Web.Controllers
 
                 if (u != null)
                 {
+
                     var ticket = userManager.CreateIdentity(u, DefaultAuthenticationTypes.ApplicationCookie);
                     HttpContext.GetOwinContext().Authentication.SignIn(ticket);
 
                     Session.Add("usuariologado", u);
 
-                    return Json(new
+
+                    if (userManager.IsInRole(u.Id, "Admin"))
                     {
-                        redirectUrl = Url.Action("Index", "Home", new { area = "AreaRestrita" }),
-                        isRedirect = true
-                    });
+                        return Json(new
+                        {
+                            redirectUrl = Url.Action("Index", "Home", new { area = "Admin" }),
+                            isRedirect = true
+                        });
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            redirectUrl = Url.Action("Index", "Home", new { area = "Clientes" }),
+                            isRedirect = true
+                        });
+                    }
                 }
                 else
                 {

@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace Projeto.Web.Areas.AreaRestrita
+namespace Projeto.Web.Areas.Admin
 {
-    public class AreaRestritaAreaRegistration : AreaRegistration 
+    public class AdminAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "AreaRestrita";
+                return "Admin";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "AreaRestrita_default",
-                "AreaRestrita/{controller}/{action}/{id}",
+                "Admin_default",
+                "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

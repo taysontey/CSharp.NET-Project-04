@@ -4,13 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Projeto.Web.Areas.AreaRestrita.Controllers
+namespace Projeto.Web.Areas.Clientes.Controllers
 {
-    [Authorize] //requer autenticação..
+    [Authorize]
     public class HomeController : Controller
     {
-        // GET: AreaRestrita/Home
-        [Authorize]
         public ActionResult Index()
         {
             return View();

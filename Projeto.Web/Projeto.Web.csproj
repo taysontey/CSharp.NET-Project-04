@@ -152,9 +152,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Areas\AreaRestrita\Views\web.config" />
-    <Content Include="Areas\AreaRestrita\Views\Shared\Layout.cshtml" />
-    <Content Include="Areas\AreaRestrita\Views\Home\Index.cshtml" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -192,6 +189,13 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Fornecedor\Index.cshtml" />
+    <Content Include="Areas\Clientes\Views\web.config" />
+    <Content Include="Areas\Clientes\Views\Shared\Layout.cshtml" />
+    <Content Include="Areas\Clientes\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -957,8 +961,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\AreaRestrita\AreaRestritaAreaRegistration.cs" />
-    <Compile Include="Areas\AreaRestrita\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\FornecedorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Clientes\ClientesAreaRegistration.cs" />
+    <Compile Include="Areas\Clientes\Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -983,7 +990,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\AreaRestrita\Models\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Clientes\Models\" />
     <Folder Include="Imagens\" />
   </ItemGroup>
   <ItemGroup>
