@@ -98,9 +98,10 @@ namespace Projeto.Web.Controllers
 
 
                 IdentityResult resultado = userManager.Create(u, model.Senha);
-
-                if (resultado.Succeeded)
+              
+               if (resultado.Succeeded)
                 {
+                    userManager.AddToRole(u.Id, "Cliente");
                     return Json("Usuário " + u.Nome + ", cadastrado com sucesso.");
                 }
                 else
