@@ -23,6 +23,10 @@ namespace Projeto.DAL.DataSource
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new CategoriaConfiguration());
+            modelBuilder.Configurations.Add(new FornecedorConfiguration());
+            modelBuilder.Configurations.Add(new ProdutoConfiguration());
+
             modelBuilder.Configurations.Add(new UsuarioConfiguration()); //Entidade do usuário
 
             base.OnModelCreating(modelBuilder);
@@ -51,5 +55,9 @@ namespace Projeto.DAL.DataSource
             modelBuilder.Entity<IdentityUserLogin>().ToTable("TB_USUARIOLOGIN");
             modelBuilder.Entity<IdentityUserClaim>().ToTable("TB_USUARIOCLAIM");
         }
+
+        public DbSet<Categoria> Categoria;
+        public DbSet<Fornecedor> Fornecedor;
+        public DbSet<Produto> Produto;
     }
 }

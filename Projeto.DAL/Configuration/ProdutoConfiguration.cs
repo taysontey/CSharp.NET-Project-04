@@ -34,6 +34,12 @@ namespace Projeto.DAL.Configuration
                 .HasColumnName("QUANTIDADE")
                 .IsRequired();
 
+            Property(p => p.IdCategoria)
+                .HasColumnName("IDCATEGORIA");
+
+            Property(p => p.IdFornecedor)
+                .HasColumnName("IDFORNECEDOR");
+
             #region Relacionamentos
 
             HasRequired(p => p.Fornecedor)

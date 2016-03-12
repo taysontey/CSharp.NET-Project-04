@@ -58,7 +58,12 @@
     <Compile Include="Configuration\ProdutoConfiguration.cs" />
     <Compile Include="Configuration\UsuarioConfiguration.cs" />
     <Compile Include="DataSource\Conexao.cs" />
+    <Compile Include="Generics\GenericDal.cs" />
+    <Compile Include="Generics\IGenericDal.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Persistence\CategoriaDal.cs" />
+    <Compile Include="Persistence\FornecedorDal.cs" />
+    <Compile Include="Persistence\ProdutoDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
