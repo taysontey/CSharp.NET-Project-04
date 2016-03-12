@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\CategoriaConfiguration.cs" />
+    <Compile Include="Configuration\FornecedorConfiguration.cs" />
+    <Compile Include="Configuration\ProdutoConfiguration.cs" />
     <Compile Include="Configuration\UsuarioConfiguration.cs" />
     <Compile Include="DataSource\Conexao.cs" />
     <Compile Include="Migrations\Configuration.cs" />
