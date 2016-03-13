@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Areas/Admin/Views/Shared/Layout.cshtml";
+}
+
+<div class="container" style="text-align:center" data-ng-app="myApp" data-ng-controller="fornecedorCtrl">
+    <table class="table table-hover" style="text-align:center">
+
+        <thead>
+            <tr>
+                <th style="text-align:center">Código</th>
+                <th style="text-align:center">Nome</th>
+                <th style="text-align:center">CNPJ</th>
+                <th style="text-align:center">Opções</th>
+            </tr>
+        </thead>
+
+        <tbody data-ng-repeat="fornecedor in fornecedores">
+            <tr>
+                <td>{{fornecedor.IdFornecedor}}</td>
+                <td>{{fornecedor.Nome}}</td>
+                <td>{{fornecedor.CNPJ}}</td>
+                <td>
+                    <button class="btn btn-info glyphicon glyphicon-edit" name="btnEditar" data-ng-click="editar(fornecedor)"> Editar</button>
+                    <button class="btn btn-danger glyphicon glyphicon-trash" name="btnExcluir" data-ng-click="excluir(fornecedor)"> Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+

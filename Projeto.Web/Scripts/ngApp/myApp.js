@@ -2,7 +2,7 @@
 var fornecedorApp = angular.module('fornecedorApp', ['oitozero.ngSweetAlert', 'ngMask']);
 var myApp = angular.module('myApp', ['usuarioApp', 'fornecedorApp']);
 
-usuarioApp.controller('loginCtrl', function ($scope, $http,  SweetAlert) {
+usuarioApp.controller('loginCtrl', function ($scope, $http, SweetAlert) {
 
     $scope.msg = "";
 
@@ -35,7 +35,7 @@ usuarioApp.controller('usuarioCtrl', ['$scope', 'Upload', '$http', 'SweetAlert',
         }).then(function (resp) {
             SweetAlert.swal("", resp.data, "success");  //mensagem
             $scope.usuario = "";                        //reseta os valores do usuario
-            $scope.myForm.$setPristine();   
+            $scope.myForm.$setPristine();
         });
     }
 }]);
@@ -67,6 +67,14 @@ fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) 
 
     $scope.msg = "";
 
+    $http.get("/Fornecedor/Consultar")
+    .success(function (lista) {
+        $scope.fornecedores = lista;
+    })
+    .error(function (msg) {
+        $scope.msg = msg.data;
+    });
+
     $scope.cadastrar = function (fornecedor) {
         $http.post("/Fornecedor/Cadastrar", { model: fornecedor })
         .success(function (msg) {
@@ -77,5 +85,33 @@ fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) 
         .error(function (msg) {
             $scope.msg = msg.data;
         })
+    }
+
+    $scope.excluir = function (fornecedor) {
+
+        SweetAlert.swal({
+            title: "",
+            text: "Deseja realmente excluir esse fornecedor?",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText: "Não",
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sim",
+            closeOnConfirm: false
+        },
+        function (isConfirm) {
+            if (isConfirm) {
+                $http.post("/Fornecedor/Excluir", { model: fornecedor })
+                .success(function (msg) {
+                    SweetAlert.swal("", msg, "success");
+                    window.setTimeout(function () {
+                        location.reload()
+                    }, 3000)
+                })
+                .error(function (msg) {
+                    $scope.msg = msg.data;
+                });
+            }
+        });
     }
 });
