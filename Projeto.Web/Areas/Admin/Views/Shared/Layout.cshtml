@@ -21,7 +21,7 @@
             Usuario u = (Usuario)Session["usuariologado"];
             <div class="container">
                 <div class="row">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-black">
                         <div class="panel-heading">
                             <div class="col-md-10">
                                 <h3>Projeto Identity</h3>
@@ -47,8 +47,8 @@
                                     <li class="dropdown">
                                         <a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-down"></span> Fornecedor</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#"> <span class="glyphicon glyphicon-plus"></span> Cadastrar</a></li>
-                                            <li><a href="#"> <span class="glyphicon glyphicon-search"></span> Consultar</a></li>
+                                            <li><a href="./Fornecedor/Cadastro"> <span class="glyphicon glyphicon-plus"></span> Cadastrar</a></li>
+                                            <li><a href="./Fornecedor/Consulta"> <span class="glyphicon glyphicon-search"></span> Consultar</a></li>
                                         </ul>
                                     </li>
 
@@ -67,10 +67,12 @@
                                 </ul>
                             </div>
                         </nav>
-                        
+                        <br />
+                        @RenderBody()
                     </div>
+                    
                 </div>
-                @RenderBody()
+                
             </div>
         }
 }

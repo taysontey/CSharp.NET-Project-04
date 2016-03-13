@@ -9,7 +9,7 @@ namespace Projeto.Web.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class FornecedorController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Cadastro()
         {
             return View();
         }
