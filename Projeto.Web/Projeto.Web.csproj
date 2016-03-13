@@ -177,9 +177,9 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\dist\sweetalert.css" />
-    <Content Include="Scripts\dist\SweetAlert.js" />
-    <Content Include="Scripts\dist\sweetalert.min.js" />
+    <Content Include="Scripts\ngSweetAlert\sweetalert.css" />
+    <Content Include="Scripts\ngSweetAlert\SweetAlert.js" />
+    <Content Include="Scripts\ngSweetAlert\sweetalert.min.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
@@ -202,9 +202,9 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\FileAPI.flash.swf" />
-    <Content Include="Scripts\FileAPI.js" />
-    <Content Include="Scripts\FileAPI.min.js" />
+    <Content Include="Scripts\ngFileUpload\FileAPI.flash.swf" />
+    <Content Include="Scripts\ngFileUpload\FileAPI.js" />
+    <Content Include="Scripts\ngFileUpload\FileAPI.min.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-et.js" />
@@ -951,13 +951,14 @@
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\myApp.js" />
-    <Content Include="Scripts\ng-file-upload-all.js" />
-    <Content Include="Scripts\ng-file-upload-all.min.js" />
-    <Content Include="Scripts\ng-file-upload-shim.js" />
-    <Content Include="Scripts\ng-file-upload-shim.min.js" />
-    <Content Include="Scripts\ng-file-upload.js" />
-    <Content Include="Scripts\ng-file-upload.min.js" />
+    <Content Include="Scripts\ngApp\myApp.js" />
+    <Content Include="Scripts\ngFileUpload\ng-file-upload-all.js" />
+    <Content Include="Scripts\ngFileUpload\ng-file-upload-all.min.js" />
+    <Content Include="Scripts\ngFileUpload\ng-file-upload-shim.js" />
+    <Content Include="Scripts\ngFileUpload\ng-file-upload-shim.min.js" />
+    <Content Include="Scripts\ngFileUpload\ng-file-upload.js" />
+    <Content Include="Scripts\ngFileUpload\ng-file-upload.min.js" />
+    <Content Include="Scripts\ngMask\ngMask.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -967,6 +968,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\FornecedorController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Models\FornecedorModel.cs" />
     <Compile Include="Areas\Clientes\ClientesAreaRegistration.cs" />
     <Compile Include="Areas\Clientes\Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -993,7 +995,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Clientes\Models\" />
     <Folder Include="Imagens\" />
   </ItemGroup>

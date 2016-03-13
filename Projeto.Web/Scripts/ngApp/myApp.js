@@ -1,6 +1,8 @@
-﻿var myApp = angular.module('myApp', ['ngFileUpload', 'oitozero.ngSweetAlert']);
+﻿var usuarioApp = angular.module('usuarioApp', ['ngFileUpload', 'oitozero.ngSweetAlert']);
+var fornecedorApp = angular.module('fornecedorApp', ['oitozero.ngSweetAlert', 'ngMask']);
+var myApp = angular.module('myApp', ['usuarioApp', 'fornecedorApp']);
 
-myApp.controller('loginCtrl', function ($scope, $http,  SweetAlert) {
+usuarioApp.controller('loginCtrl', function ($scope, $http,  SweetAlert) {
 
     $scope.msg = "";
 
@@ -15,30 +17,30 @@ myApp.controller('loginCtrl', function ($scope, $http,  SweetAlert) {
             }
         })
         .error(function (msg) {
-            $scope.msg = msg;
+            $scope.msg = msg.data;
         });
     }
 
 });
 
-myApp.controller('usuarioCtrl', ['$scope', 'Upload', '$http', 'SweetAlert', function ($scope, Upload, $http, SweetAlert) {
+usuarioApp.controller('usuarioCtrl', ['$scope', 'Upload', '$http', 'SweetAlert', function ($scope, Upload, $http, SweetAlert) {
 
     $scope.msg = "";
 
     $scope.cadastrar = function (usuario, file) {
 
         Upload.upload({
-            url: '/Usuario/CadastrarUsuario',
+            url: '/Usuario/Cadastrar',
             data: { model: usuario, file: file }
         }).then(function (resp) {
-            SweetAlert.swal("", resp.data, "success");         //mensagem
-            $scope.usuario = "";            //reseta os valores do usuario
-            $scope.myForm.$setPristine();   //reseta o form "myForm"
+            SweetAlert.swal("", resp.data, "success");  //mensagem
+            $scope.usuario = "";                        //reseta os valores do usuario
+            $scope.myForm.$setPristine();   
         });
     }
 }]);
 
-myApp.directive('passwordCheck', function () {
+usuarioApp.directive('passwordCheck', function () {
     return {
         require: 'ngModel',
         link: function (scope, elem, attrs, model) {
@@ -61,3 +63,19 @@ myApp.directive('passwordCheck', function () {
     };
 });
 
+fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) {
+
+    $scope.msg = "";
+
+    $scope.cadastrar = function (fornecedor) {
+        $http.post("/Fornecedor/Cadastrar", { model: fornecedor })
+        .success(function (msg) {
+            SweetAlert.swal("", msg, "success");
+            $scope.fornecedor = "";            //reseta os valores do usuario
+            $scope.myForm.$setPristine();      //reseta o form "myForm"
+        })
+        .error(function (msg) {
+            $scope.msg = msg.data;
+        })
+    }
+});

@@ -13,6 +13,16 @@
     <script src="~/Scripts/jquery-1.9.1.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
 
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/ngMask/ngMask.min.js"></script>
+    <script src="~/Scripts/ngFileUpload/ng-file-upload.js"></script>
+
+    <script src="~/Scripts/ngSweetAlert/SweetAlert.js"></script>
+    <script src="~/Scripts/ngSweetAlert/sweetalert.min.js"></script>
+    <link href="~/Scripts/ngSweetAlert/sweetalert.css" rel="stylesheet" />
+
+    <script src="~/Scripts/ngApp/myApp.js"></script>
+
 </head>
 <body>
     @{
@@ -41,13 +51,13 @@
                                 <ul class="nav nav-tabs">
 
                                     <li>
-                                        <a href="#"><span class="glyphicon glyphicon-home"></span> Home</a>
+                                        <a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home"></span> Home</a>
                                     </li>
 
                                     <li class="dropdown">
                                         <a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-down"></span> Fornecedor</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="./Fornecedor/Cadastro"> <span class="glyphicon glyphicon-plus"></span> Cadastrar</a></li>
+                                            <li><a href="@Url.Action("Cadastro", "Fornecedor")"> <span class="glyphicon glyphicon-plus"></span> Cadastrar</a></li>
                                             <li><a href="./Fornecedor/Consulta"> <span class="glyphicon glyphicon-search"></span> Consultar</a></li>
                                         </ul>
                                     </li>

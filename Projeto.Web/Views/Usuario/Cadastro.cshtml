@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<form data-ng-app="myApp" data-ng-controller="usuarioCtrl" name="myForm">
+<form name="myForm" data-ng-app="myApp" data-ng-controller="usuarioCtrl">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-5 col-md-offset-3">
@@ -15,9 +15,9 @@
 
                     <div class="panel-body">
 
-                        <input type="text" name="nome" data-ng-model="usuario.Nome" class="form-control" placeholder="Nome" required/>
+                        <input type="text" name="nome" data-ng-model="usuario.Nome" class="form-control" placeholder="Nome" required />
                         <br />
-                        
+
                         <input type="text" name="sobrenome" data-ng-model="usuario.Sobrenome" class="form-control" placeholder="Sobrenome" required />
                         <br />
 
@@ -33,11 +33,11 @@
                         <br />
 
                         <label>Foto:</label>
-                        <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB" required/>
-                     
+                        <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB" required />
+
                     </div>
 
-                    
+
 
                     <div class="panel-footer">
                         <button name="btnCadastrar"
@@ -48,7 +48,7 @@
                         <hr />
                         <span>{{msg}}</span>
                     </div>
-                    
+
                 </div>
                 <a href="/Usuario/Login">Voltar</a>
             </div>

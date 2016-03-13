@@ -28,7 +28,7 @@ namespace Projeto.DAL.Configuration
 
             Property(f => f.CNPJ)
                 .HasColumnName("CNPJ")
-                .HasMaxLength(14)
+                .HasMaxLength(18)
                 .IsRequired();
         }
     }
