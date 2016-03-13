@@ -1,6 +1,6 @@
-﻿var myApp = angular.module('myApp', ['ngFileUpload']);
+﻿var myApp = angular.module('myApp', ['ngFileUpload', 'oitozero.ngSweetAlert']);
 
-myApp.controller('loginCtrl', function ($scope, $http) {
+myApp.controller('loginCtrl', function ($scope, $http,  SweetAlert) {
 
     $scope.msg = "";
 
@@ -11,7 +11,7 @@ myApp.controller('loginCtrl', function ($scope, $http) {
                 window.location.href = json.redirectUrl;
             }
             else {
-                $scope.msg = json;
+                SweetAlert.swal("", json, "error");
             }
         })
         .error(function (msg) {
@@ -21,7 +21,7 @@ myApp.controller('loginCtrl', function ($scope, $http) {
 
 });
 
-myApp.controller('usuarioCtrl', ['$scope', 'Upload', '$http', function ($scope, Upload, $http) {
+myApp.controller('usuarioCtrl', ['$scope', 'Upload', '$http', 'SweetAlert', function ($scope, Upload, $http, SweetAlert) {
 
     $scope.msg = "";
 
@@ -31,7 +31,7 @@ myApp.controller('usuarioCtrl', ['$scope', 'Upload', '$http', function ($scope, 
             url: '/Usuario/CadastrarUsuario',
             data: { model: usuario, file: file }
         }).then(function (resp) {
-            $scope.msg = resp.data;         //mensagem
+            SweetAlert.swal("", resp.data, "success");         //mensagem
             $scope.usuario = "";            //reseta os valores do usuario
             $scope.myForm.$setPristine();   //reseta o form "myForm"
         });

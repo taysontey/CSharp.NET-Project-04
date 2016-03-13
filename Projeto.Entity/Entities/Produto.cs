@@ -12,8 +12,9 @@ namespace Projeto.Entity.Entities
         public virtual string Nome { get; set; }
         public virtual decimal Preco { get; set; }
         public virtual int Quantidade { get; set; }
-        public int IdFornecedor { get; set; }
-        public int IdCategoria { get; set; }
+        public virtual string Foto { get; set; }
+        public virtual int IdFornecedor { get; set; }
+        public virtual int IdCategoria { get; set; }
 
         #region Relacionamentos
 

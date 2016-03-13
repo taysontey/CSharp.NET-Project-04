@@ -34,6 +34,11 @@ namespace Projeto.DAL.Configuration
                 .HasColumnName("QUANTIDADE")
                 .IsRequired();
 
+            Property(p => p.Foto)
+                .HasColumnName("FOTO")
+                .HasMaxLength(50)
+                .IsRequired();
+
             Property(p => p.IdCategoria)
                 .HasColumnName("IDCATEGORIA");
 
