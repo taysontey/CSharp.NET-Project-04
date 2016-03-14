@@ -1,6 +1,7 @@
 ﻿var usuarioApp = angular.module('usuarioApp', ['ngFileUpload', 'oitozero.ngSweetAlert']);
 var fornecedorApp = angular.module('fornecedorApp', ['oitozero.ngSweetAlert', 'ngMask']);
-var myApp = angular.module('myApp', ['usuarioApp', 'fornecedorApp']);
+var produtoApp = angular.module('produtoApp', ['oitozero.ngSweetAlert', 'ngFileUpload', 'ngMask']);
+var myApp = angular.module('myApp', ['usuarioApp', 'fornecedorApp', 'produtoApp']);
 
 usuarioApp.controller('loginCtrl', function ($scope, $http, SweetAlert) {
 
@@ -114,4 +115,17 @@ fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) 
             }
         });
     }
+});
+
+produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert) {
+
+    $scope.msg = "";
+
+    $http.get("/Produto/DropDownFornecedor")
+    .success(function (lista) {
+        $scope.fornecedores = lista;
+    })
+    .error(function (msg) {
+        $scope.msg = msg.data;
+    });
 });

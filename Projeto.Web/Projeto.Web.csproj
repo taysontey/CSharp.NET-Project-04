@@ -200,6 +200,7 @@
     <Content Include="Areas\Clientes\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Fornecedor\Cadastro.cshtml" />
     <Content Include="Areas\Admin\Views\Fornecedor\Consulta.cshtml" />
+    <Content Include="Areas\Admin\Views\Produto\Cadastro.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -969,7 +970,9 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\FornecedorController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProdutoController.cs" />
     <Compile Include="Areas\Admin\Models\FornecedorModel.cs" />
+    <Compile Include="Areas\Admin\Models\ProdutoModel.cs" />
     <Compile Include="Areas\Clientes\ClientesAreaRegistration.cs" />
     <Compile Include="Areas\Clientes\Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
