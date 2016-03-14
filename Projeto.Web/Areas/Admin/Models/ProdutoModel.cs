@@ -15,5 +15,6 @@ namespace Projeto.Web.Areas.Admin.Models
     {
         public int IdCategoria { get; set; }
         public string Nome { get; set; }
+        public string Descricao { get; set; }
     }
 }

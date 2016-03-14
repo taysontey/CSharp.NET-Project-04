@@ -120,6 +120,15 @@ fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) 
 produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert) {
 
     $scope.msg = "";
+    $scope.display = "display:none";
+
+    $scope.showDiv = function () {
+        $scope.display = "display:block";
+    };
+
+    $scope.hideDiv = function () {
+        $scope.display = "display:none";
+    };
 
     $http.get("/Produto/DropDownFornecedor")
     .success(function (lista) {
@@ -128,4 +137,23 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert) {
     .error(function (msg) {
         $scope.msg = msg.data;
     });
+
+    $http.get("/Produto/DropDownCategoria")
+    .success(function (lista) {
+        $scope.categorias = lista;
+    })
+    .error(function (msg) {
+        $scope.msg = msg.data;
+    });
+
+    $scope.cadastrar = function (categoria) {
+        $http.post("/Produto/CadastrarCategoria", { model: categoria })
+        .success(function (msg) {
+            SweetAlert.swal("", msg, "success");
+            $scope.categoria = "";          //reseta os valores dos campos
+        })
+        .error(function (msg) {
+            $scope.msg = msg.data;
+        });
+    };
 });

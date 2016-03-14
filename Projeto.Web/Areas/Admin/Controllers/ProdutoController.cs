@@ -40,5 +40,49 @@ namespace Projeto.Web.Areas.Admin.Controllers
                 return Json(e.Message);
             }
         }
+
+        public JsonResult DropDownCategoria()
+        {
+            try
+            {
+                var lista = new List<ProdutoModelCategoria>();
+
+                CategoriaDal d = new CategoriaDal();
+
+                foreach(Categoria c in d.FindAll())
+                {
+                    var model = new ProdutoModelCategoria();
+                    model.IdCategoria = c.IdCategoria;
+                    model.Nome = c.Nome;
+
+                    lista.Add(model);
+                }
+                return Json(lista, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult CadastrarCategoria(ProdutoModelCategoria model)
+        {
+            try
+            {
+                Categoria c = new Categoria();
+                c.Nome = model.Nome;
+                c.Descricao = model.Descricao;
+
+                CategoriaDal d = new CategoriaDal();
+                d.Insert(c);
+
+                return Json("Categoria cadastrada com sucesso.");
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message);
+            }
+        }
     }
 }

@@ -36,7 +36,34 @@
                         <option value="">Escolha uma Categoria...</option>
                         <option data-ng-repeat="categoria in categorias" value="{{categoria.IdCategoria}}">{{categoria.Nome}}</option>
                     </select>
+
+                    <button name="btnShowDiv" data-ng-click="showDiv()">Incluir Categoria</button>
                 </div>
+            </div>
+
+            <div style="{{display}}">
+                <hr />
+                <div class="form-group">
+                    <label class="control-label col-md-2">Nome:</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" name="nome" data-ng-model="categoria.Nome" placeholder="Digite aqui..." required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Descrição(Opcional):</label>
+                    <div class="col-md-5">
+                        <textarea name="descricao" data-ng-model="categoria.Descricao" rows="5" cols="62" placeholder="   Digite aqui..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button name="btnCadastrarCategoria" data-ng-click="cadastrar(categoria)">Cadastrar Categoria</button>
+                        <button name="btnCancelar" data-ng-click="hideDiv()">Cancelar</button>
+                    </div>
+                </div>
+                <hr />
             </div>
 
             <div class="form-group">
@@ -59,10 +86,15 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <button data-ng-disabled="myForm.nome.$invalid || myForm.preco.$invalid" class="btn btn-info glyphicon glyphicon-plus-sign" name="btnCadastrar" data-ng-click="cadastrar(produto)"> Cadastrar Produto</button>
+                    <button 
+                            data-ng-disabled="myForm.nome.$invalid || myForm.preco.$invalid || myForm.quantidade.$invalid || myForm.categoria.$invalid || myForm.fornecedor.$invalid || myForm.file.$invalid" 
+                            class="btn btn-info glyphicon glyphicon-plus-sign" 
+                            name="btnCadastrar" 
+                            data-ng-click="cadastrar(produto)"> 
+                    Cadastrar Produto
+                    </button>
                 </div>
             </div>
-        </div>
+        </div>     
     </div>
 </form>
-
