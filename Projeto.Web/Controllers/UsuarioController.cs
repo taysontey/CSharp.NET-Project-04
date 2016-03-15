@@ -81,7 +81,7 @@ namespace Projeto.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult Cadastrar(UsuarioViewModelCadastro model, HttpPostedFileBase file)
+        public JsonResult CadastrarUsuario(UsuarioViewModelCadastro model, HttpPostedFileBase file)
         {
             try
             {

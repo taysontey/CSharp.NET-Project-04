@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Projeto.Entity.Entities;
 using Projeto.DAL.Persistence;
 using Projeto.Web.Areas.Admin.Models;
+using System.IO;
 
 namespace Projeto.Web.Areas.Admin.Controllers
 {
@@ -96,6 +97,32 @@ namespace Projeto.Web.Areas.Admin.Controllers
                 d.Delete(c);
 
                 return Json("Categoria excluída.");
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult CadastrarProduto(ProdutoModelCadastro model, HttpPostedFileBase file)
+        {
+            try
+            {
+                Produto p = new Produto();
+                p.Nome = model.Nome;
+                p.Preco = model.Preco;
+                p.Quantidade = model.Quantidade;
+                p.Foto = Guid.NewGuid().ToString() + "." + Path.GetExtension(file.FileName);
+                p.IdCategoria = model.IdCategoria;
+                p.IdFornecedor = model.IdFornecedor;
+
+                file.SaveAs(HttpContext.Server.MapPath("/Imagens/") + p.Foto);
+
+                ProdutoDal d = new ProdutoDal();
+                d.Insert(p);
+
+                return Json("Produto cadastrado com sucesso.");
             }
             catch (Exception e)
             {

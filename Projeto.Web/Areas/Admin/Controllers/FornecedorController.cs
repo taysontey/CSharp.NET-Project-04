@@ -23,7 +23,7 @@ namespace Projeto.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Cadastrar(FornecedorModelCadastro model)
+        public JsonResult CadastrarFornecedor(FornecedorModelCadastro model)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace Projeto.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public JsonResult Consultar()
+        public JsonResult ConsultarFornecedor()
         {
             try
             {
@@ -70,7 +70,7 @@ namespace Projeto.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Excluir(FornecedorModelConsulta model)
+        public JsonResult ExcluirFornecedor(FornecedorModelConsulta model)
         {
             try
             {

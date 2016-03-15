@@ -31,7 +31,7 @@ usuarioApp.controller('usuarioCtrl', ['$scope', 'Upload', '$http', 'SweetAlert',
     $scope.cadastrar = function (usuario, file) {
 
         Upload.upload({
-            url: '/Usuario/Cadastrar',
+            url: '/Usuario/CadastrarUsuario',
             data: { model: usuario, file: file }
         }).then(function (resp) {
             SweetAlert.swal("", resp.data, "success");  //mensagem
@@ -68,7 +68,7 @@ fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) 
 
     $scope.msg = "";
 
-    $http.get("/Fornecedor/Consultar")
+    $http.get("/Fornecedor/ConsultarFornecedor")
     .success(function (lista) {
         $scope.fornecedores = lista;
     })
@@ -77,7 +77,7 @@ fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) 
     });
 
     $scope.cadastrar = function (fornecedor) {
-        $http.post("/Fornecedor/Cadastrar", { model: fornecedor })
+        $http.post("/Fornecedor/CadastrarFornecedor", { model: fornecedor })
         .success(function (msg) {
             SweetAlert.swal("", msg, "success");
             $scope.fornecedor = "";            //reseta os valores do usuario
@@ -102,7 +102,7 @@ fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) 
         },
         function (isConfirm) {
             if (isConfirm) {
-                $http.post("/Fornecedor/Excluir", { model: fornecedor })
+                $http.post("/Fornecedor/ExcluirFornecedor", { model: fornecedor })
                 .success(function (msg) {
                     SweetAlert.swal("", msg, "success");
                     window.setTimeout(function () {
@@ -117,7 +117,7 @@ fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) 
     }
 });
 
-produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert) {
+produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload) {
 
     $scope.msg = "";
     $scope.display = "display:none";
@@ -170,6 +170,18 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert) {
         })
         .error(function (msg) {
             $scope.msg = msg.data;
+        });
+    };
+
+    $scope.cadastrar = function (produto, file) {
+        
+        Upload.upload({
+            url: '/Produto/CadastrarProduto',
+            data: { model: produto, file: file }
+        }).then(function (resp) {
+            SweetAlert.swal("", resp.data, "success");  //mensagem
+            $scope.produto = "";
+            $scope.myForm.$setPristine();
         });
     };
 });
