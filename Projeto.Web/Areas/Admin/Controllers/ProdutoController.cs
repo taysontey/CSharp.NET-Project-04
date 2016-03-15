@@ -84,5 +84,23 @@ namespace Projeto.Web.Areas.Admin.Controllers
                 return Json(e.Message);
             }
         }
+
+        [HttpPost]
+        public JsonResult ExcluirCategoria(int id)
+        {
+            try
+            {
+                CategoriaDal d = new CategoriaDal();
+                Categoria c = d.FindById(id);
+
+                d.Delete(c);
+
+                return Json("Categoria excluída.");
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message);
+            }
+        }
     }
 }

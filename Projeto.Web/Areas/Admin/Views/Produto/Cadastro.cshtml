@@ -37,7 +37,8 @@
                         <option data-ng-repeat="categoria in categorias" value="{{categoria.IdCategoria}}">{{categoria.Nome}}</option>
                     </select>
 
-                    <button name="btnShowDiv" data-ng-click="showDiv()">Incluir Categoria</button>
+                    <button name="btnShowDiv" data-ng-click="showDiv()">Incluir</button>
+                    <button name="btnExcluir" data-ng-click="excluir(produto.IdCategoria)">Excluir</button>
                 </div>
             </div>
 

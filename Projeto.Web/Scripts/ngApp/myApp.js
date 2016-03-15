@@ -151,6 +151,22 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert) {
         .success(function (msg) {
             SweetAlert.swal("", msg, "success");
             $scope.categoria = "";          //reseta os valores dos campos
+            window.setTimeout(function () {
+                location.reload()
+            }, 3000)
+        })
+        .error(function (msg) {
+            $scope.msg = msg.data;
+        });
+    };
+
+    $scope.excluir = function (id) {
+        $http.post("/Produto/ExcluirCategoria", { id: id })
+        .success(function (msg) {
+            SweetAlert.swal("", msg, "success");
+            window.setTimeout(function () {
+                location.reload()
+            }, 3000)
         })
         .error(function (msg) {
             $scope.msg = msg.data;
