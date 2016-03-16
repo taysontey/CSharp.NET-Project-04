@@ -17,6 +17,11 @@ namespace Projeto.Web.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult Consulta()
+        {
+            return View();
+        }
+
         public JsonResult DropDownFornecedor()
         {
             try
@@ -25,7 +30,7 @@ namespace Projeto.Web.Areas.Admin.Controllers
 
                 FornecedorDal d = new FornecedorDal();
 
-                foreach(Fornecedor f in d.FindAll())
+                foreach (Fornecedor f in d.FindAll())
                 {
                     var model = new ProdutoModelFornecedor();
                     model.IdFornecedor = f.IdFornecedor;
@@ -50,7 +55,7 @@ namespace Projeto.Web.Areas.Admin.Controllers
 
                 CategoriaDal d = new CategoriaDal();
 
-                foreach(Categoria c in d.FindAll())
+                foreach (Categoria c in d.FindAll())
                 {
                     var model = new ProdutoModelCategoria();
                     model.IdCategoria = c.IdCategoria;
@@ -123,6 +128,37 @@ namespace Projeto.Web.Areas.Admin.Controllers
                 d.Insert(p);
 
                 return Json("Produto cadastrado com sucesso.");
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult ConsultarProduto()
+        {
+            try
+            {
+                var lista = new List<ProdutoModelConsulta>();
+
+                ProdutoDal d = new ProdutoDal();
+
+                foreach(Produto p in d.FindAll())
+                {
+                    var model = new ProdutoModelConsulta();
+                    model.IdProduto = p.IdProduto;
+                    model.Nome = p.Nome;
+                    model.Preco = p.Preco;
+                    model.Quantidade = p.Quantidade;
+                    model.Categoria = p.Categoria.Nome;
+                    model.Fornecedor = p.Fornecedor.Nome;
+                    model.Foto = p.Foto;
+
+                    lista.Add(model);
+                }
+
+                return Json(lista, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {

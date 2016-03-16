@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Areas/Admin/Views/Shared/Layout.cshtml";
+}
+
+<div class="container" style="text-align:center" data-ng-app="myApp" data-ng-controller="produtoCtrl">
+    <table class="table table-hover" style="text-align:center">
+
+        <thead>
+            <tr>
+                <th style="text-align:center">Código</th>
+                <th style="text-align:center">Foto</th>
+                <th style="text-align:center">Nome</th>
+                <th style="text-align:center">Categoria</th>
+                <th style="text-align:center">Fornecedor</th>
+                <th style="text-align:center">Preço</th>
+                <th style="text-align:center">Quantidade</th>
+                <th style="text-align:center">Opções</th>
+            </tr>
+        </thead>
+
+        <tbody data-ng-repeat="produto in produtos">
+            <tr>
+                <td>{{produto.IdProduto}}</td>
+                <td><img src="/Imagens/{{produto.Foto}}" width="40" height="40" /></td>
+                <td>{{produto.Nome}}</td>        
+                <td>{{produto.Categoria}}</td>
+                <td>{{produto.Fornecedor}}</td>
+                <td>R${{produto.Preco}}</td>
+                <td>{{produto.Quantidade}}</td>
+                <td>
+                    <button class="btn btn-info glyphicon glyphicon-edit" name="btnEditar" data-ng-click="editar(produto)"> Editar</button>
+                    <button class="btn btn-danger glyphicon glyphicon-trash" name="btnExcluir" data-ng-click="excluir(produto)"> Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+

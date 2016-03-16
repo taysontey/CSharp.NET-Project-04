@@ -201,6 +201,7 @@
     <Content Include="Areas\Admin\Views\Fornecedor\Cadastro.cshtml" />
     <Content Include="Areas\Admin\Views\Fornecedor\Consulta.cshtml" />
     <Content Include="Areas\Admin\Views\Produto\Cadastro.cshtml" />
+    <Content Include="Areas\Admin\Views\Produto\Consulta.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

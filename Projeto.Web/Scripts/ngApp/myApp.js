@@ -184,4 +184,13 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
             $scope.myForm.$setPristine();
         });
     };
+
+    $http.get("/Produto/ConsultarProduto")
+    .success(function (lista) {
+        $scope.produtos = lista;
+    })
+    .error(function (msg) {
+        $scope.msg = msg.data;
+    });
+
 });

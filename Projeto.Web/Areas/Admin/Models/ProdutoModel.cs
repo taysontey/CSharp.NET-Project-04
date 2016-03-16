@@ -27,4 +27,15 @@ namespace Projeto.Web.Areas.Admin.Models
         public int IdCategoria { get; set; }
         public int IdFornecedor { get; set; }
     }
+
+    public class ProdutoModelConsulta
+    {
+        public int IdProduto { get; set; }
+        public string Nome { get; set; }
+        public decimal Preco { get; set; }
+        public int Quantidade { get; set; }
+        public string Categoria { get; set; }
+        public string Fornecedor { get; set; }
+        public string Foto { get; set; }
+    }
 }
