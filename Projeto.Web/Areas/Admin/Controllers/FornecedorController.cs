@@ -42,6 +42,55 @@ namespace Projeto.Web.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult EditarFornecedor(int id)
+        {
+            try
+            {
+                FornecedorDal d = new FornecedorDal();
+                Fornecedor f = d.FindById(id);
+
+                if (f != null)
+                {
+                    var model = new FornecedorModelConsulta();
+                    model.IdFornecedor = f.IdFornecedor;
+                    model.Nome = f.Nome;
+                    model.CNPJ = f.CNPJ;
+
+                    return Json(model);
+                }
+                else
+                {
+                    return Json("Fornecedor não encontrado.");
+                }
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult AtualizarFornecedor(FornecedorModelConsulta model)
+        {
+            try
+            {
+                Fornecedor f = new Fornecedor();
+                f.IdFornecedor = model.IdFornecedor;
+                f.Nome = model.Nome;
+                f.CNPJ = model.CNPJ;
+
+                FornecedorDal d = new FornecedorDal();
+                d.Update(f);
+
+                return Json("Fornecedor atualizado.");
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message);
+            }
+        }
+
         [HttpGet]
         public JsonResult ConsultarFornecedor()
         {
@@ -77,7 +126,7 @@ namespace Projeto.Web.Areas.Admin.Controllers
                 FornecedorDal d = new FornecedorDal();
                 Fornecedor f = d.FindById(id);
 
-                if(f != null)
+                if (f != null)
                 {
                     d.Delete(f);
                     return Json("Fornecedor excluído.");

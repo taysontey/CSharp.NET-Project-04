@@ -4,6 +4,45 @@
 }
 
 <div class="container" style="text-align:center" data-ng-app="myApp" data-ng-controller="fornecedorCtrl">
+    
+    <div style="{{display}}">
+        <form name="myForm">
+            <div class="container">
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Código:</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="id" data-ng-model="fornecedor.IdFornecedor" required value="{{fornecedor.IdFornecedor}}" readonly />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Nome:</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="nome" data-ng-model="fornecedor.Nome" placeholder="Digite aqui..." required value="{{fornecedor.Nome}}" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">CNPJ:</label>
+                        <div class="col-md-5">
+                            <input type="text" mask="99.999.999/9999-99" ng-minlength="14" class="form-control" name="cnpj" data-ng-model="fornecedor.CNPJ" placeholder="Digite aqui..." required value="{{fornecedor.CNPJ}}" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <button data-ng-disabled="myForm.nome.$invalid || myForm.cnpj.$invalid" class="btn btn-info glyphicon glyphicon-plus-sign" name="btnCadastrar" data-ng-click="atualizar(fornecedor)"> Atualizar Fornecedor</button>
+                            <button class="btn btn-info glyphicon glyphicon-share-alt" name="btnCancelar" data-ng-click="cancelar()"> Cancelar</button>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <hr />
+
     <table class="table table-hover" style="text-align:center">
 
         <thead>
@@ -21,7 +60,7 @@
                 <td>{{fornecedor.Nome}}</td>
                 <td>{{fornecedor.CNPJ}}</td>
                 <td>
-                    <button class="btn btn-info glyphicon glyphicon-edit" name="btnEditar" data-ng-click="editar(fornecedor)"> Editar</button>
+                    <button class="btn btn-info glyphicon glyphicon-edit" name="btnEditar" data-ng-click="editar(fornecedor.IdFornecedor)"> Editar</button>
                     <button class="btn btn-danger glyphicon glyphicon-trash" name="btnExcluir" data-ng-click="excluir(fornecedor.IdFornecedor)"> Excluir</button>
                 </td>
             </tr>
