@@ -88,11 +88,11 @@ fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) 
         })
     }
 
-    $scope.excluir = function (fornecedor) {
+    $scope.excluir = function (id) {
 
         SweetAlert.swal({
-            title: "",
-            text: "Deseja realmente excluir esse fornecedor?",
+            title: "Atenção!",
+            text: "Todos os produtos ligados à ele também serão excluídos.",
             type: "warning",
             showCancelButton: true,
             cancelButtonText: "Não",
@@ -102,7 +102,7 @@ fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) 
         },
         function (isConfirm) {
             if (isConfirm) {
-                $http.post("/Fornecedor/ExcluirFornecedor", { model: fornecedor })
+                $http.post("/Fornecedor/ExcluirFornecedor", { id: id })
                 .success(function (msg) {
                     SweetAlert.swal("", msg, "success");
                     window.setTimeout(function () {

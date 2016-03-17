@@ -70,16 +70,22 @@ namespace Projeto.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult ExcluirFornecedor(FornecedorModelConsulta model)
+        public JsonResult ExcluirFornecedor(int id)
         {
             try
             {
                 FornecedorDal d = new FornecedorDal();
-                Fornecedor f = d.FindById(model.IdFornecedor);
+                Fornecedor f = d.FindById(id);
 
-                d.Delete(f);
-
-                return Json("Fornecedor excluído.");
+                if(f != null)
+                {
+                    d.Delete(f);
+                    return Json("Fornecedor excluído.");
+                }
+                else
+                {
+                    return Json("Fornecedor não encontrado.");
+                }
             }
             catch (Exception e)
             {
