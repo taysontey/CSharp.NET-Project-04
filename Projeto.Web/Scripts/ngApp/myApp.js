@@ -146,6 +146,14 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
         $scope.msg = msg.data;
     });
 
+    $http.get("/Produto/ConsultarProduto")
+    .success(function (lista) {
+        $scope.produtos = lista;
+    })
+    .error(function (msg) {
+        $scope.msg = msg.data;
+    });
+
     $scope.cadastrar = function (categoria) {
         $http.post("/Produto/CadastrarCategoria", { model: categoria })
         .success(function (msg) {
@@ -185,12 +193,31 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
         });
     };
 
-    $http.get("/Produto/ConsultarProduto")
-    .success(function (lista) {
-        $scope.produtos = lista;
-    })
-    .error(function (msg) {
-        $scope.msg = msg.data;
-    });
+    $scope.excluir = function (id) {
 
+        SweetAlert.swal({
+            title: "Atenção!",
+            text: "Deseja realmente excluir esse produto?",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText: "Não",
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sim",
+            closeOnConfirm: false
+        },
+        function (isConfirm) {
+            if (isConfirm) {
+                $http.post("/Produto/ExcluirProduto", { id: id })
+                .success(function (msg) {
+                    SweetAlert.swal("", msg, "success");
+                    window.setTimeout(function () {
+                        location.reload()
+                    }, 3000)
+                })
+                .error(function (msg) {
+                    $scope.msg = msg.data;
+                });
+            }
+        });
+    }
 });

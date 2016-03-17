@@ -10,6 +10,7 @@ using System.IO;
 
 namespace Projeto.Web.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProdutoController : Controller
     {
         public ActionResult Cadastro()
@@ -21,6 +22,8 @@ namespace Projeto.Web.Areas.Admin.Controllers
         {
             return View();
         }
+
+        #region DropDowns
 
         public JsonResult DropDownFornecedor()
         {
@@ -71,6 +74,10 @@ namespace Projeto.Web.Areas.Admin.Controllers
             }
         }
 
+        #endregion
+
+        #region Métodos AJAX(Categoria)
+
         [HttpPost]
         public JsonResult CadastrarCategoria(ProdutoModelCategoria model)
         {
@@ -109,6 +116,10 @@ namespace Projeto.Web.Areas.Admin.Controllers
             }
         }
 
+        #endregion
+
+        #region Métodos AJAX(Produto)
+
         [HttpPost]
         public JsonResult CadastrarProduto(ProdutoModelCadastro model, HttpPostedFileBase file)
         {
@@ -144,7 +155,7 @@ namespace Projeto.Web.Areas.Admin.Controllers
 
                 ProdutoDal d = new ProdutoDal();
 
-                foreach(Produto p in d.FindAll())
+                foreach (Produto p in d.FindAll())
                 {
                     var model = new ProdutoModelConsulta();
                     model.IdProduto = p.IdProduto;
@@ -165,5 +176,31 @@ namespace Projeto.Web.Areas.Admin.Controllers
                 return Json(e.Message);
             }
         }
+
+        [HttpPost]
+        public JsonResult ExcluirProduto(int id)
+        {
+            try
+            {
+                ProdutoDal d = new ProdutoDal();
+                Produto p = d.FindById(id);
+
+                if (p != null)
+                {
+                    d.Delete(p);
+                    return Json("Produto excluído.");
+                }
+                else
+                {
+                    return Json("Produto não encontrado.");
+                }
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message);
+            }
+        }
+
+        #endregion
     }
 }
