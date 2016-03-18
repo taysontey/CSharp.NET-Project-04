@@ -146,6 +146,40 @@ namespace Projeto.Web.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult EditarProduto(int id)
+        {
+            try
+            {
+                ProdutoDal d = new ProdutoDal();
+                Produto p = d.FindById(id);
+
+                if (p != null)
+                {
+                    var model = new ProdutoModelConsulta();
+                    model.IdProduto = p.IdProduto;
+                    model.Nome = p.Nome;
+                    model.Preco = p.Preco;
+                    model.Quantidade = p.Quantidade;
+                    model.Categoria = p.Categoria.Nome;
+                    model.IdCategoria = p.Categoria.IdCategoria;
+                    model.Fornecedor = p.Fornecedor.Nome;
+                    model.IdFornecedor = p.Fornecedor.IdFornecedor;
+                    model.Foto = p.Foto;
+
+                    return Json(model);
+                }
+                else
+                {
+                    return Json("Produto não encontrado.");
+                }
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message);
+            }
+        }
+
         [HttpGet]
         public JsonResult ConsultarProduto()
         {

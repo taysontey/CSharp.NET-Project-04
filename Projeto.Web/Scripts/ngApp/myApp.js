@@ -222,6 +222,21 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
         });
     };
 
+    $scope.editar = function (id) {
+        $http.post("/Produto/EditarProduto", { id: id })
+        .success(function (result) {
+            $scope.produto = result;
+            $scope.display = "display:block";
+        })
+        .error(function (msg) {
+            $scope.msg = msg.data;
+        });
+    };
+
+    $scope.cancelar = function () {
+        $scope.display = "display:none";
+    };
+
     $scope.excluir = function (id) {
 
         SweetAlert.swal({
