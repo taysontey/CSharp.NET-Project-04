@@ -35,9 +35,6 @@
                         <label class="control-label col-md-2">Categoria:</label>
                         <div class="col-md-2">
                             <select name="categoria" data-ng-model="produto.IdCategoria" required>
-
-                                <option value="{{produto.IdCategoria}}" selected="selected">{{produto.Categoria}}</option>
-
                                 <option value="">Escolha uma Categoria...</option>
                                 <option data-ng-repeat="categoria in categorias" value="{{categoria.IdCategoria}}">{{categoria.Nome}}</option>
                             </select>
@@ -48,9 +45,6 @@
                         <label class="control-label col-md-2">Fornecedor:</label>
                         <div class="col-md-2">
                             <select name="fornecedor" data-ng-model="produto.IdFornecedor" required>
-
-                                <option value="{{produto.IdFornecedor}}" selected="selected">{{produto.Fornecedor}}</option>
-
                                 <option value="">Escolha um Fornecedor...</option>
                                 <option data-ng-repeat="fornecedor in fornecedores" value="{{fornecedor.IdFornecedor}}">{{fornecedor.Nome}}</option>
                             </select>
@@ -94,6 +88,8 @@
                 <td>{{produto.IdProduto}}</td>
                 <td>
                     <img src="/Imagens/{{produto.Foto}}" width="40" height="40" />
+                    <br />
+                    <div class="btn btn-link" ngf-select="upload($file, produto.IdProduto)">Atualizar</div>
                 </td>
                 <td>{{produto.Nome}}</td>
                 <td>{{produto.Categoria}}</td>

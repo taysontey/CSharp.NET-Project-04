@@ -233,6 +233,19 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
         });
     };
 
+    $scope.upload = function (file, id) {
+
+        Upload.upload({
+            url: '/Produto/AtualizarFoto',
+            data: { file: file, id: id }
+        }).then(function (resp) {
+            SweetAlert.swal("", resp.data, "success");  //mensagem
+            window.setTimeout(function () {
+                location.reload()
+            }, 3000)
+        });
+    };
+
     $scope.cancelar = function () {
         $scope.display = "display:none";
     };
@@ -263,5 +276,5 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
                 });
             }
         });
-    }
+    }; 
 });
