@@ -233,6 +233,19 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
         });
     };
 
+    $scope.atualizar = function (produto) {
+        $http.post("/Produto/AtualizarProduto", { model: produto })
+        .success(function (msg) {
+            SweetAlert.swal("", msg, "success");
+            window.setTimeout(function () {
+                location.reload()
+            }, 3000)
+        })
+        .error(function (msg) {
+            $scope.msg = msg.data;
+        });
+    };
+
     $scope.upload = function (file, id) {
 
         Upload.upload({

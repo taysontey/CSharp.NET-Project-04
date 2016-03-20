@@ -162,7 +162,9 @@ namespace Projeto.Web.Areas.Admin.Controllers
                     model.Preco = p.Preco;
                     model.Quantidade = p.Quantidade;
                     model.Categoria = p.Categoria.Nome;
+                    model.IdCategoria = p.Categoria.IdCategoria;
                     model.Fornecedor = p.Fornecedor.Nome;
+                    model.IdFornecedor = p.IdFornecedor;
                     model.Foto = p.Foto;
 
                     return Json(model);
@@ -171,6 +173,31 @@ namespace Projeto.Web.Areas.Admin.Controllers
                 {
                     return Json("Produto não encontrado.");
                 }
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult AtualizarProduto(ProdutoModelConsulta model)
+        {
+            try
+            {
+                Produto p = new Produto();
+                p.IdProduto = model.IdProduto;
+                p.Nome = model.Nome;
+                p.Preco = model.Preco;
+                p.Quantidade = model.Quantidade;
+                p.IdCategoria = model.IdCategoria;
+                p.IdFornecedor = model.IdFornecedor;
+                p.Foto = model.Foto;
+
+                ProdutoDal d = new ProdutoDal();
+                d.Update(p);
+
+                return Json("Produto atualizado.");
             }
             catch (Exception e)
             {

@@ -35,7 +35,9 @@ namespace Projeto.Web.Areas.Admin.Models
         public decimal Preco { get; set; }
         public int Quantidade { get; set; }
         public string Categoria { get; set; }
+        public int IdCategoria { get; set; }
         public string Fornecedor { get; set; }
+        public int IdFornecedor { get; set; }
         public string Foto { get; set; }
     }
 }

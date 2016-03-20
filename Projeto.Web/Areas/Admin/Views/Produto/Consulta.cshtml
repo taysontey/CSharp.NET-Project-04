@@ -6,9 +6,16 @@
 <div class="container" style="text-align:center" data-ng-app="myApp" data-ng-controller="produtoCtrl">
 
     <div style="{{display}}">
-        <form name="myForm" data-ng-app="myApp" data-ng-controller="produtoCtrl">
+        <form name="myForm">
             <div class="container">
                 <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Código:</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="codigo" data-ng-model="produto.IdProduto" readonly/>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2">Nome:</label>
@@ -35,6 +42,9 @@
                         <label class="control-label col-md-2">Categoria:</label>
                         <div class="col-md-2">
                             <select name="categoria" data-ng-model="produto.IdCategoria" required>
+
+                                <option selected="selected" value="{{produto.IdCategoria}}">{{produto.Categoria}}</option>
+
                                 <option value="">Escolha uma Categoria...</option>
                                 <option data-ng-repeat="categoria in categorias" value="{{categoria.IdCategoria}}">{{categoria.Nome}}</option>
                             </select>
@@ -45,18 +55,23 @@
                         <label class="control-label col-md-2">Fornecedor:</label>
                         <div class="col-md-2">
                             <select name="fornecedor" data-ng-model="produto.IdFornecedor" required>
+
+                                <option selected="selected" value="{{produto.IdFornecedor}}">{{produto.Fornecedor}}</option>
+
                                 <option value="">Escolha um Fornecedor...</option>
                                 <option data-ng-repeat="fornecedor in fornecedores" value="{{fornecedor.IdFornecedor}}">{{fornecedor.Nome}}</option>
                             </select>
                         </div>
                     </div>
 
+                    <input hidden type="text" name="foto" data-ng-model="produto.Foto" value="`{{produto.Foto}}"/>
+
                     <div class="form-group">
                         <div class="col-md-10">
                             <button data-ng-disabled="myForm.nome.$invalid || myForm.preco.$invalid || myForm.quantidade.$invalid || myForm.categoria.$invalid || myForm.fornecedor.$invalid"
                                     class="btn btn-info glyphicon glyphicon-plus-sign"
                                     name="btnAtualizar"
-                                    data-ng-click="atualizar(produto, file)">
+                                    data-ng-click="atualizar(produto)">
                                 Atualizar Produto
                             </button>
                             <button class="btn btn-info glyphicon glyphicon-share-alt" name="btnCancelar" data-ng-click="cancelar()"> Cancelar</button>
