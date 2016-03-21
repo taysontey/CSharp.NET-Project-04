@@ -56,8 +56,8 @@ namespace Projeto.DAL.DataSource
             modelBuilder.Entity<IdentityUserClaim>().ToTable("TB_USUARIOCLAIM");
         }
 
-        public DbSet<Categoria> Categoria;
-        public DbSet<Fornecedor> Fornecedor;
-        public DbSet<Produto> Produto;
+        public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Fornecedor> Fornecedor { get; set; }
+        public DbSet<Produto> Produto { get; set; }
     }
 }

@@ -63,7 +63,7 @@ namespace Projeto.Web.Controllers
                     {
                         return Json(new
                         {
-                            redirectUrl = Url.Action("Index", "Home", new { area = "Clientes" }),
+                            redirectUrl = Url.Action("Index", "Cliente", new { area = "Clientes" }),
                             isRedirect = true
                         });
                     }

@@ -1,7 +1,8 @@
 ﻿var usuarioApp = angular.module('usuarioApp', ['ngFileUpload', 'oitozero.ngSweetAlert']);
 var fornecedorApp = angular.module('fornecedorApp', ['oitozero.ngSweetAlert', 'ngMask']);
 var produtoApp = angular.module('produtoApp', ['oitozero.ngSweetAlert', 'ngFileUpload', 'ngMask']);
-var myApp = angular.module('myApp', ['usuarioApp', 'fornecedorApp', 'produtoApp']);
+var clienteApp = angular.module('clienteApp', []);
+var myApp = angular.module('myApp', ['usuarioApp', 'fornecedorApp', 'produtoApp', 'clienteApp']);
 
 usuarioApp.controller('loginCtrl', function ($scope, $http, SweetAlert) {
 
@@ -211,7 +212,7 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
     };
 
     $scope.cadastrar = function (produto, file) {
-        
+
         Upload.upload({
             url: '/Produto/CadastrarProduto',
             data: { model: produto, file: file }
@@ -289,5 +290,22 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
                 });
             }
         });
-    }; 
+    };
+});
+
+clienteApp.controller('clienteCtrl', function ($scope, $http) {
+
+    $scope.display = "display:none";
+
+    $scope.consultar = function (categoria) {
+        $http.post("/Cliente/Consultar", { categoria: categoria })
+        .success(function (lista) {
+            $scope.display = "display:block";
+            $scope.produtos = lista;
+        })
+        .error(function (msg) {
+            $scope.msg = msg.data;
+        });
+    };
+
 });

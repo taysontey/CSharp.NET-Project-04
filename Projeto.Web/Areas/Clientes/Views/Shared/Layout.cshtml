@@ -10,6 +10,19 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
 
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/ngMask/ngMask.min.js"></script>
+    <script src="~/Scripts/ngFileUpload/ng-file-upload.js"></script>
+
+    <script src="~/Scripts/ngSweetAlert/SweetAlert.js"></script>
+    <script src="~/Scripts/ngSweetAlert/sweetalert.min.js"></script>
+    <link href="~/Scripts/ngSweetAlert/sweetalert.css" rel="stylesheet" />
+
+    <script src="~/Scripts/ngApp/myApp.js"></script>
+
 </head>
 <body>
     @{
@@ -29,7 +42,7 @@
                             <div class="col-md-2" style="text-align:right">
                                 <img src="/Imagens/@u.Foto" class="img-circle"
                                      width="80" height="80" />
-                                
+
                             </div>
                             <br /><br /><br /><br />
                         </div>
@@ -37,7 +50,7 @@
                             <div class="container-fluid">
                                 <ul class="nav nav-tabs">
                                     <li>
-                                        <a href="#"><span class="glyphicon glyphicon-home"></span> Home</a>
+                                        <a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home"></span> Home</a>
                                     </li>
                                     <li class="nav nav-bar navbar-right">
                                         <a href="/Usuario/Logout"><spam class="glyphicon glyphicon-log-out"></spam> Logout</a>
@@ -48,7 +61,7 @@
                     </div>
                 </div>
                 @RenderBody()
-            </div>
+            </div>     
         }
     }
 </body>
