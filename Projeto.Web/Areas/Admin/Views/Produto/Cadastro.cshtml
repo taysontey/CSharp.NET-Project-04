@@ -38,12 +38,13 @@
                     </select>
 
                     <button name="btnShowDiv" data-ng-click="showDiv()">Incluir</button>
-                    <button name="btnExcluir" data-ng-click="excluir(produto.IdCategoria)">Excluir</button>
+                    <button name="btnExcluir" data-ng-click="excluirCategoria(produto.IdCategoria)">Excluir</button>
                 </div>
             </div>
-
+            
             <div style="{{display}}">
                 <hr />
+                
                 <div class="form-group">
                     <label class="control-label col-md-2">Nome:</label>
                     <div class="col-md-5">
@@ -60,7 +61,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <button name="btnCadastrarCategoria" data-ng-click="cadastrar(categoria)">Cadastrar Categoria</button>
+                        <button name="btnCadastrarCategoria" data-ng-click="cadastrarCategoria(categoria)">Cadastrar Categoria</button>
                         <button name="btnCancelar" data-ng-click="hideDiv()">Cancelar</button>
                     </div>
                 </div>

@@ -184,7 +184,7 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
         $scope.msg = msg.data;
     });
 
-    $scope.cadastrar = function (categoria) {
+    $scope.cadastrarCategoria = function (categoria) {
         $http.post("/Produto/CadastrarCategoria", { model: categoria })
         .success(function (msg) {
             SweetAlert.swal("", msg, "success");
@@ -198,7 +198,7 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
         });
     };
 
-    $scope.excluir = function (id) {
+    $scope.excluirCategoria = function (id) {
         $http.post("/Produto/ExcluirCategoria", { id: id })
         .success(function (msg) {
             SweetAlert.swal("", msg, "success");
