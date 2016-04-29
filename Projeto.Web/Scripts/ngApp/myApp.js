@@ -295,7 +295,13 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
 
 clienteApp.controller('clienteCtrl', function ($scope, $http) {
 
-    $scope.display = "display:none";
+    $http.get("/Cliente/Consultar")
+    .success(function (lista) {
+        $scope.produtos = lista;
+    })
+    .error(function (msg) {
+        $scope.msg = msg.data;
+    });
 
     $scope.consultar = function (categoria) {
         $http.post("/Cliente/Consultar", { categoria: categoria })
