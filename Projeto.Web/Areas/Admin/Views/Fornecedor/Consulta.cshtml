@@ -4,43 +4,49 @@
 }
 
 <div class="container" style="text-align:center" data-ng-app="myApp" data-ng-controller="fornecedorCtrl">
-    
-    <div style="{{display}}">
-        <form name="myForm">
-            <div class="container">
-                <div class="form-horizontal">
 
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Código:</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="id" data-ng-model="fornecedor.IdFornecedor" required value="{{fornecedor.IdFornecedor}}" readonly />
-                        </div>
+    <form name="myForm">
+        <div id="janela_edicao" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        Atualizar dados do Fornecedor
                     </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Nome:</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="nome" data-ng-model="fornecedor.Nome" placeholder="Digite aqui..." required value="{{fornecedor.Nome}}" />
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Código:</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="id" data-ng-model="fornecedor.IdFornecedor" required value="{{fornecedor.IdFornecedor}}" readonly />
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">CNPJ:</label>
-                        <div class="col-md-5">
-                            <input type="text" mask="99.999.999/9999-99" ng-minlength="14" class="form-control" name="cnpj" data-ng-model="fornecedor.CNPJ" placeholder="Digite aqui..." required value="{{fornecedor.CNPJ}}" />
+                        <br />
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Nome:</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="nome" data-ng-model="fornecedor.Nome" placeholder="Digite aqui..." required value="{{fornecedor.Nome}}" />
+                            </div>
                         </div>
+                        <br />
+                        <div class="form-group">
+                            <label class="control-label col-md-2">CNPJ:</label>
+                            <div class="col-md-10">
+                                <input type="text" mask="99.999.999/9999-99" ng-minlength="14" class="form-control" name="cnpj" data-ng-model="fornecedor.CNPJ" placeholder="Digite aqui..." required value="{{fornecedor.CNPJ}}" />
+                            </div>
+                        </div>
+                        <br />
                     </div>
-
-                    <div class="form-group">
-                        <div class="col-md-10">
-                            <button data-ng-disabled="myForm.nome.$invalid || myForm.cnpj.$invalid" class="btn btn-info glyphicon glyphicon-plus-sign" name="btnCadastrar" data-ng-click="atualizar(fornecedor)"> Atualizar Fornecedor</button>
-                            <button class="btn btn-info glyphicon glyphicon-share-alt" name="btnCancelar" data-ng-click="cancelar()"> Cancelar</button>
-                         </div>
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <button data-ng-disabled="myForm.nome.$invalid || myForm.cnpj.$invalid" class="btn btn-info glyphicon glyphicon-plus-sign" name="btnCadastrar" data-ng-click="atualizar(fornecedor)"> Atualizar Fornecedor</button>
+                                <button data-dismiss="modal" class="btn btn-info glyphicon glyphicon-share-alt"> Cancelar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
     <hr />
 
     <table class="table table-hover" style="text-align:center">
@@ -60,7 +66,7 @@
                 <td>{{fornecedor.Nome}}</td>
                 <td>{{fornecedor.CNPJ}}</td>
                 <td>
-                    <button class="btn btn-info glyphicon glyphicon-edit" name="btnEditar" data-ng-click="editar(fornecedor.IdFornecedor)"> Editar</button>
+                    <button data-target="#janela_edicao" data-toggle="modal" class="btn btn-info glyphicon glyphicon-edit" data-ng-click="editar(fornecedor.IdFornecedor)">Editar</button>
                     <button class="btn btn-danger glyphicon glyphicon-trash" name="btnExcluir" data-ng-click="excluir(fornecedor.IdFornecedor)"> Excluir</button>
                 </td>
             </tr>

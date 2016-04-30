@@ -68,15 +68,18 @@ usuarioApp.directive('passwordCheck', function () {
 fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) {
 
     $scope.msg = "";
-    $scope.display = "display:none";
 
-    $http.get("/Fornecedor/ConsultarFornecedor")
-    .success(function (lista) {
-        $scope.fornecedores = lista;
-    })
-    .error(function (msg) {
-        $scope.msg = msg.data;
-    });
+    $scope.consultar = function () {
+        $http.get("/Fornecedor/ConsultarFornecedor")
+        .success(function (lista) {
+            $scope.fornecedores = lista;
+        })
+        .error(function (msg) {
+            $scope.msg = msg.data;
+        })
+    }
+
+    $scope.consultar();
 
     $scope.cadastrar = function (fornecedor) {
         $http.post("/Fornecedor/CadastrarFornecedor", { model: fornecedor })
@@ -94,15 +97,10 @@ fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) 
         $http.post("/Fornecedor/EditarFornecedor", { id: id })
         .success(function (result) {
             $scope.fornecedor = result;
-            $scope.display = "display:block";
         })
         .error(function (msg) {
             $scope.msg = msg.data;
         });
-    };
-
-    $scope.cancelar = function () {
-        $scope.display = "display:none";
     };
 
     $scope.atualizar = function (fornecedor) {
