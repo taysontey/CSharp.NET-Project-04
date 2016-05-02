@@ -5,78 +5,103 @@
 
 <div class="container" style="text-align:center" data-ng-app="myApp" data-ng-controller="produtoCtrl">
 
+    <form name="myForm">
+        <div id="janela_edicao" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        Atualizar dados do Fornecedor
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Código:</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="codigo" data-ng-model="produto.IdProduto" readonly />
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Nome:</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="nome" data-ng-model="produto.Nome" placeholder="Digite aqui..." required />
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Preço:</label>
+                            <div class="col-md-10">
+                                <input type="number" class="form-control" name="preco" data-ng-model="produto.Preco" placeholder="Digite aqui..." required />
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Quantidade:</label>
+                            <div class="col-md-10">
+                                <input type="number" class="form-control" name="quantidade" data-ng-model="produto.Quantidade" placeholder="Digite aqui..." required />
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Categoria:</label>
+                            <div class="col-md-2">
+                                <select name="categoria" data-ng-model="produto.IdCategoria" required>
+
+                                    <option selected="selected" value="{{produto.IdCategoria}}">{{produto.Categoria}}</option>
+
+                                    <option value="">Escolha uma Categoria...</option>
+                                    <option data-ng-repeat="categoria in categorias" value="{{categoria.IdCategoria}}">{{categoria.Nome}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Fornecedor:</label>
+                            <div class="col-md-2">
+                                <select name="fornecedor" data-ng-model="produto.IdFornecedor" required>
+
+                                    <option selected="selected" value="{{produto.IdFornecedor}}">{{produto.Fornecedor}}</option>
+
+                                    <option value="">Escolha um Fornecedor...</option>
+                                    <option data-ng-repeat="fornecedor in fornecedores" value="{{fornecedor.IdFornecedor}}">{{fornecedor.Nome}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+
+                        <input hidden type="text" name="foto" data-ng-model="produto.Foto" value="`{{produto.Foto}}" />
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <button data-ng-disabled="myForm.nome.$invalid || myForm.preco.$invalid || myForm.quantidade.$invalid || myForm.categoria.$invalid || myForm.fornecedor.$invalid"
+                                        class="btn btn-info glyphicon glyphicon-plus-sign"
+                                        name="btnAtualizar"
+                                        data-ng-click="atualizar(produto)">
+                                    Atualizar Produto
+                                </button>
+                                <button  data-dismiss="modal" class="btn btn-info glyphicon glyphicon-share-alt"> Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
     <div style="{{display}}">
         <form name="myForm">
             <div class="container">
                 <div class="form-horizontal">
 
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Código:</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="codigo" data-ng-model="produto.IdProduto" readonly/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Nome:</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="nome" data-ng-model="produto.Nome" placeholder="Digite aqui..." required />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Preço:</label>
-                        <div class="col-md-5">
-                            <input type="number" class="form-control" name="preco" data-ng-model="produto.Preco" placeholder="Digite aqui..." required />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Quantidade:</label>
-                        <div class="col-md-5">
-                            <input type="number" class="form-control" name="quantidade" data-ng-model="produto.Quantidade" placeholder="Digite aqui..." required />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Categoria:</label>
-                        <div class="col-md-2">
-                            <select name="categoria" data-ng-model="produto.IdCategoria" required>
-
-                                <option selected="selected" value="{{produto.IdCategoria}}">{{produto.Categoria}}</option>
-
-                                <option value="">Escolha uma Categoria...</option>
-                                <option data-ng-repeat="categoria in categorias" value="{{categoria.IdCategoria}}">{{categoria.Nome}}</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Fornecedor:</label>
-                        <div class="col-md-2">
-                            <select name="fornecedor" data-ng-model="produto.IdFornecedor" required>
-
-                                <option selected="selected" value="{{produto.IdFornecedor}}">{{produto.Fornecedor}}</option>
-
-                                <option value="">Escolha um Fornecedor...</option>
-                                <option data-ng-repeat="fornecedor in fornecedores" value="{{fornecedor.IdFornecedor}}">{{fornecedor.Nome}}</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <input hidden type="text" name="foto" data-ng-model="produto.Foto" value="`{{produto.Foto}}"/>
-
-                    <div class="form-group">
-                        <div class="col-md-10">
-                            <button data-ng-disabled="myForm.nome.$invalid || myForm.preco.$invalid || myForm.quantidade.$invalid || myForm.categoria.$invalid || myForm.fornecedor.$invalid"
-                                    class="btn btn-info glyphicon glyphicon-plus-sign"
-                                    name="btnAtualizar"
-                                    data-ng-click="atualizar(produto)">
-                                Atualizar Produto
-                            </button>
-                            <button class="btn btn-info glyphicon glyphicon-share-alt" name="btnCancelar" data-ng-click="cancelar()"> Cancelar</button>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </form>
@@ -112,7 +137,7 @@
                 <td>R${{produto.Preco}}</td>
                 <td>{{produto.Quantidade}}</td>
                 <td>
-                    <button class="btn btn-info glyphicon glyphicon-edit" name="btnEditar" data-ng-click="editar(produto.IdProduto)"> Editar</button>
+                    <button data-target="#janela_edicao" data-toggle="modal" class="btn btn-info glyphicon glyphicon-edit" name="btnEditar" data-ng-click="editar(produto.IdProduto)"> Editar</button>
                     <button class="btn btn-danger glyphicon glyphicon-trash" name="btnExcluir" data-ng-click="excluir(produto.IdProduto)"> Excluir</button>
                 </td>
             </tr>

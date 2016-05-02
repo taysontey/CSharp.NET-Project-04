@@ -69,17 +69,13 @@ fornecedorApp.controller('fornecedorCtrl', function ($scope, $http, SweetAlert) 
 
     $scope.msg = "";
 
-    $scope.consultar = function () {
-        $http.get("/Fornecedor/ConsultarFornecedor")
-        .success(function (lista) {
-            $scope.fornecedores = lista;
-        })
-        .error(function (msg) {
-            $scope.msg = msg.data;
-        })
-    }
-
-    $scope.consultar();
+    $http.get("/Fornecedor/ConsultarFornecedor")
+    .success(function (lista) {
+        $scope.fornecedores = lista;
+    })
+    .error(function (msg) {
+        $scope.msg = msg.data;
+    })
 
     $scope.cadastrar = function (fornecedor) {
         $http.post("/Fornecedor/CadastrarFornecedor", { model: fornecedor })
@@ -225,7 +221,6 @@ produtoApp.controller('produtoCtrl', function ($scope, $http, SweetAlert, Upload
         $http.post("/Produto/EditarProduto", { id: id })
         .success(function (result) {
             $scope.produto = result;
-            $scope.display = "display:block";
         })
         .error(function (msg) {
             $scope.msg = msg.data;
