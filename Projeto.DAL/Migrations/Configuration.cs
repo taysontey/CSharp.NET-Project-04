@@ -11,7 +11,6 @@ namespace Projeto.DAL.Migrations
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "Projeto.DAL.DataSource.Conexao";
         }
 
         protected override void Seed(Projeto.DAL.DataSource.Conexao context)

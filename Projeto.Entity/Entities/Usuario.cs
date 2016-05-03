@@ -11,6 +11,8 @@ namespace Projeto.Entity.Entities
     {
         public virtual string Nome { get; set; }
         public virtual string Sobrenome { get; set; }
+        public virtual string Sexo { get; set; }
+        public virtual DateTime DataNascimento { get; set; }
         public virtual string Foto { get; set; }
     }
 }

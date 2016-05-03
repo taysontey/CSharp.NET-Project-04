@@ -32,6 +32,15 @@ namespace Projeto.DAL.Configuration
                 .HasMaxLength(50)
                 .IsRequired();
 
+            Property(u => u.Sexo)
+                .HasColumnName("SEXO")
+                .HasMaxLength(15)
+                .IsRequired();
+
+            Property(u => u.DataNascimento)
+                .HasColumnName("DATANASCIMENTO")
+                .IsRequired();
+
             Property(u => u.Foto)
                 .HasColumnName("FOTO")
                 .HasMaxLength(50)

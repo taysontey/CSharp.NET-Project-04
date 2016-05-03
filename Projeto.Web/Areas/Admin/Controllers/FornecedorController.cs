@@ -22,14 +22,18 @@ namespace Projeto.Web.Areas.Admin.Controllers
             return View();
         }
 
+        #region Métodos AJAX(Fornecedor)
+
         [HttpPost]
         public JsonResult CadastrarFornecedor(FornecedorModelCadastro model)
         {
             try
             {
-                Fornecedor f = new Fornecedor();
-                f.Nome = model.Nome;
-                f.CNPJ = model.CNPJ;
+                Fornecedor f = new Fornecedor()
+                {
+                    Nome = model.Nome,
+                    CNPJ = model.CNPJ
+                };
 
                 FornecedorDal d = new FornecedorDal();
                 d.Insert(f);
@@ -75,10 +79,12 @@ namespace Projeto.Web.Areas.Admin.Controllers
         {
             try
             {
-                Fornecedor f = new Fornecedor();
-                f.IdFornecedor = model.IdFornecedor;
-                f.Nome = model.Nome;
-                f.CNPJ = model.CNPJ;
+                Fornecedor f = new Fornecedor()
+                {
+                    IdFornecedor = model.IdFornecedor,
+                    Nome = model.Nome,
+                    CNPJ = model.CNPJ
+                };
 
                 FornecedorDal d = new FornecedorDal();
                 d.Update(f);
@@ -141,5 +147,6 @@ namespace Projeto.Web.Areas.Admin.Controllers
                 return Json(e.Message);
             }
         }
+        #endregion
     }
 }

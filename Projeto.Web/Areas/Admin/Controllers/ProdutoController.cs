@@ -83,9 +83,11 @@ namespace Projeto.Web.Areas.Admin.Controllers
         {
             try
             {
-                Categoria c = new Categoria();
-                c.Nome = model.Nome;
-                c.Descricao = model.Descricao;
+                Categoria c = new Categoria()
+                    {
+                        Nome = model.Nome,
+                        Descricao = model.Descricao
+                    };
 
                 CategoriaDal d = new CategoriaDal();
                 d.Insert(c);
@@ -125,13 +127,15 @@ namespace Projeto.Web.Areas.Admin.Controllers
         {
             try
             {
-                Produto p = new Produto();
-                p.Nome = model.Nome;
-                p.Preco = model.Preco;
-                p.Quantidade = model.Quantidade;
-                p.Foto = Guid.NewGuid().ToString() + "." + Path.GetExtension(file.FileName);
-                p.IdCategoria = model.IdCategoria;
-                p.IdFornecedor = model.IdFornecedor;
+                Produto p = new Produto()
+                    {
+                        Nome = model.Nome,
+                        Preco = model.Preco,
+                        Quantidade = model.Quantidade,
+                        Foto = Guid.NewGuid().ToString() + "." + Path.GetExtension(file.FileName),
+                        IdCategoria = model.IdCategoria,
+                        IdFornecedor = model.IdFornecedor
+                    };
 
                 file.SaveAs(HttpContext.Server.MapPath("/Imagens/") + p.Foto);
 
@@ -185,14 +189,16 @@ namespace Projeto.Web.Areas.Admin.Controllers
         {
             try
             {
-                Produto p = new Produto();
-                p.IdProduto = model.IdProduto;
-                p.Nome = model.Nome;
-                p.Preco = model.Preco;
-                p.Quantidade = model.Quantidade;
-                p.IdCategoria = model.IdCategoria;
-                p.IdFornecedor = model.IdFornecedor;
-                p.Foto = model.Foto;
+                Produto p = new Produto()
+                    {
+                        IdProduto = model.IdProduto,
+                        Nome = model.Nome,
+                        Preco = model.Preco,
+                        Quantidade = model.Quantidade,
+                        IdCategoria = model.IdCategoria,
+                        IdFornecedor = model.IdFornecedor,
+                        Foto = model.Foto
+                    };
 
                 ProdutoDal d = new ProdutoDal();
                 d.Update(p);

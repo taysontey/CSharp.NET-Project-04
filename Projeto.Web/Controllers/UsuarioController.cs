@@ -85,24 +85,26 @@ namespace Projeto.Web.Controllers
         {
             try
             {
-                Usuario u = new Usuario();
-                u.Nome = model.Nome;
-                u.Sobrenome = model.Sobrenome;
-                u.UserName = model.Login;
-
-                u.Foto = Guid.NewGuid().ToString() + "."
-                        + Path.GetExtension(file.FileName);
+                Usuario u = new Usuario()
+                    {
+                        Nome = model.Nome,
+                        Sobrenome = model.Sobrenome,
+                        DataNascimento = model.DataNascimento,
+                        Sexo = model.Sexo,
+                        UserName = model.Login,
+                        Foto = Guid.NewGuid().ToString() + "."
+                                + Path.GetExtension(file.FileName)
+                    };
 
                 //upload da imagem..
                 file.SaveAs(HttpContext.Server.MapPath("/Imagens/") + u.Foto);
 
-
                 IdentityResult resultado = userManager.Create(u, model.Senha);
-              
-               if (resultado.Succeeded)
+
+                if (resultado.Succeeded)
                 {
                     userManager.AddToRole(u.Id, "Cliente");
-                    return Json("Usuário " + u.Nome + ", cadastrado com sucesso.");
+                    return Json("Usuario " + u.Nome + ", cadastrado com sucesso.");
                 }
                 else
                 {

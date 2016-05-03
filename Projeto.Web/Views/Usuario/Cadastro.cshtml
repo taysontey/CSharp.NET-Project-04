@@ -21,6 +21,14 @@
                         <input type="text" name="sobrenome" data-ng-model="usuario.Sobrenome" class="form-control" placeholder="Sobrenome" required />
                         <br />
 
+                        <input type="text" onblur="(this.type = 'text')" onfocus="(this.type = 'date')" name="datanascimento" data-ng-model="usuario.datanascimento" class="form-control" placeholder="Data de Nascimento" required/>
+                        <br />  
+
+                        <label>Sexo:</label>
+                        <input type="radio" name="sexo" data-ng-model="usuario.sexo" value="Masculino" required/> Masculino
+                        <input type="radio" name="sexo" data-ng-model="usuario.sexo" value="Feminino" required/> Feminino
+                        <hr />
+
                         <input type="text" name="login" data-ng-model="usuario.Login" class="form-control" placeholder="Login" required />
                         <br />
 
@@ -41,7 +49,7 @@
 
                     <div class="panel-footer">
                         <button name="btnCadastrar"
-                                ng-disabled="myForm.nome.$invalid || myForm.sobrenome.$invalid || myForm.login.$invalid || myForm.senha.$invalid || myForm.senhaConfirm.$invalid || myForm.file.$invalid"
+                                ng-disabled="myForm.nome.$invalid || myForm.sobrenome.$invalid || myForm.datanascimento.$invalid || myForm.sexo.$invalid || myForm.login.$invalid || myForm.senha.$invalid || myForm.senhaConfirm.$invalid || myForm.file.$invalid"
                                 data-ng-click="cadastrar(usuario, file)" class=" btn btn-info glyphicon glyphicon-plus-sign" style="width:420px">
                             Cadastrar Usuário
                         </button>
